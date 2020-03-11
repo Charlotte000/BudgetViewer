@@ -2,6 +2,7 @@ const TOKEN = process.env.token;
 const DBNAME = process.env.dbname;
 const PASSWORD = process.env.password;
 const PORT = process.env.PORT;
+const externalUrl = process.env.CUSTOM_ENV_VARIABLE
 
 const User = require('./User');
 const Item = require('./Item');
@@ -186,4 +187,6 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 				bot.sendMessage(msg.chat.id, JSON.stringify(data.map(i => i.id)));
 			});
 	});
+
+	bot.setWebHook(externalUrl + ':443/bot' + TOKEN);
 });
