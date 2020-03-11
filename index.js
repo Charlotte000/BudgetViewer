@@ -190,7 +190,7 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 	});
 
 
-	app = express();
-	app.get('/', (req, res) => res.send('Hello!'));
-	app.listen(PORT, () => console.log(`Listening port at ${PORT}`));
+	// app = express();
+	// app.get('/', (req, res) => res.send('Hello!'));
+	// app.listen(PORT, () => console.log(`Listening port at ${PORT}`));
 });
