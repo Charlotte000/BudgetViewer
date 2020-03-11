@@ -11,7 +11,6 @@ const MongoClient = require('mongodb').MongoClient;
 
 const TelegramBot = require('node-telegram-bot-api');
 const bot = new TelegramBot(TOKEN, {webHook: {port: PORT, host: '0.0.0.0'}});
-bot.setWebHook(externalUrl + ':443/bot' + TOKEN);
 
 
 function updateDB(user) {
