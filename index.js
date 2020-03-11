@@ -28,8 +28,8 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 
 	db = client.db(DBNAME).collection("budget");
 
-	const bot = new TelegramBot(TOKEN, {webhook: PORT});
-	bot.setWebHook(`https://budget-viewer.herokuapp.com:${PORT}/bot${TOKEN}`)
+	const bot = new TelegramBot(TOKEN, {webHook: PORT});
+	bot.setWebHook(`https://budget-viewer.herokuapp.com:443/bot${TOKEN}`)
 
 	// Create new user
 	bot.onText(/\/start$/, (msg, match) => {
