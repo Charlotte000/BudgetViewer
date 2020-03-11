@@ -1,7 +1,7 @@
-const TOKEN = process.env.token || '967707077:AAEMq2FtEVbZS8jzpA1a2kBxk3d77SQylwU';
-const DBNAME = process.env.dbname || 'mongodb';
-const PASSWORD = process.env.password || 'dbUser';
-const PORT = process.env.PORT || 8000;
+const TOKEN = process.env.token;
+const DBNAME = process.env.dbname;
+const PASSWORD = process.env.password;
+const PORT = process.env.PORT;
 
 const User = require('./User');
 const Item = require('./Item');
