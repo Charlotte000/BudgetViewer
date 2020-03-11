@@ -10,7 +10,7 @@ const Item = require('./Item');
 const MongoClient = require('mongodb').MongoClient;
 
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(TOKEN, {polling: true, webHook: {port: PORT, host: '0.0.0.0'}});
+const bot = new TelegramBot(TOKEN, {webHook: {port: PORT, host: '0.0.0.0'}});
 
 
 function updateDB(user) {
