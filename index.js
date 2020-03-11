@@ -150,12 +150,6 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 		}
 	});
 
-
-
-
-
-
-
 	// Remove item
 	bot.onText(/\/del(.+)$/, (msg, match) => {
 		// Get current user
