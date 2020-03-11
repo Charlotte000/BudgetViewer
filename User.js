@@ -20,7 +20,7 @@ class User {
 	}
 
 	getToday() {
-		let now = moment();
+		let now = moment.tz('Europe/Moscow');
 		let items = this.history.filter(i => i.date.year() == now.year() && i.date.month() == now.month() && i.date.date() == now.date());
 		let cost = 0
 		for (let i of items) cost += parseInt(i.cost);
@@ -30,7 +30,7 @@ class User {
 	}
 
 	getThisMonth() {
-		let now = moment();
+		let now = moment.tz('Europe/Moscow');
 		let items = this.history.filter(i => i.date.year() == now.year() && i.date.month() == now.month())
 		let cost = 0
 		for (let i of items) cost += parseInt(i.cost);
@@ -49,14 +49,14 @@ class User {
 			c.data.push(i);
 			c.cost += parseInt(i.cost)
 		}
-		moment.locale('ru')
+		moment.tz('Europe/Moscow').locale('ru')
 		items.sort((a, b) => moment(a.date, 'MMMM YYYY') > moment(b.date, 'MMMM YYYY'));
 		for (let d of items) d.data.sort((a, b) => a.date > b.date);
 		return {'items': items}
 	}
 
 	static timeTest() {
-		return moment().locale('ru').format('DD/MM/YYYY HH:mm');
+		return moment.tz('Europe/Moscow').locale('ru').format('DD/MM/YYYY HH:mm');
 	}
 }
 

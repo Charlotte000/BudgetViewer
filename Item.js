@@ -6,7 +6,7 @@ class Item {
 		this.cost = cost;
 		if (date) {
 			this.date = moment(date, 'DD/MM/YYYY HH:mm');
-		} else this.date = moment();
+		} else this.date = moment.tz('Europe/Moscow');
 	}
 }
 
