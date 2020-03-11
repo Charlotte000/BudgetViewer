@@ -1,8 +1,7 @@
-const TOKEN = process.env.token || '967707077:AAEMq2FtEVbZS8jzpA1a2kBxk3d77SQylwU';
-const DBNAME = process.env.dbname || 'mongodb';
-const PASSWORD = process.env.password || 'dbUser';
-const PORT = process.env.PORT || 8000;
-const externalUrl = process.env.CUSTOM_ENV_VARIABLE || '0.0.0.0';
+const TOKEN = process.env.token;
+const DBNAME = process.env.dbname;
+const PASSWORD = process.env.password;
+const PORT = process.env.PORT;
 
 const User = require('./User');
 const Item = require('./Item');
@@ -192,5 +191,5 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 
 	app = express();
 	app.get('/', (req, res) => res.send('Hello!'));
-	app.listen(PORT, () => console.log("Listening port"));
+	app.listen(PORT, () => console.log(`Listening port at ${PORT}`));
 });
