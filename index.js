@@ -11,7 +11,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const TelegramBot = require('node-telegram-bot-api');
 const bot = new TelegramBot(TOKEN, {webHook: {port: PORT, host: '0.0.0.0'}});
-
+bot.setWebHook(process.env.HEROKU_URL + bot.token);
 
 function updateDB(user) {
 	histToWrite = [];
