@@ -1,6 +1,7 @@
 const TOKEN = process.env.token;
 const DBNAME = process.env.dbname;
 const PASSWORD = process.env.password;
+const PORT = process.env.PORT;
 
 const User = require('./User');
 const Item = require('./Item');
@@ -8,7 +9,7 @@ const Item = require('./Item');
 const MongoClient = require('mongodb').MongoClient;
 
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(TOKEN, {polling: true});
+const bot = new TelegramBot(TOKEN, {polling: true, webHook: {port: PORT, host: '0.0.0.0'}});
 
 
 function updateDB(user) {
