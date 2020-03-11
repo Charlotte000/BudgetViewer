@@ -28,7 +28,7 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 
 	db = client.db(DBNAME).collection("budget");
 
-	const bot = new TelegramBot(TOKEN, {webHook: PORT});
+	const bot = new TelegramBot(TOKEN, {webHook: {port: PORT}});
 	bot.setWebHook(`https://budget-viewer.herokuapp.com:443/bot${TOKEN}`)
 
 	// Create new user
