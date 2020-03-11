@@ -1,17 +1,16 @@
-const TOKEN = process.env.token;
-const DBNAME = process.env.dbname;
-const PASSWORD = process.env.password;
-const PORT = process.env.PORT;
-const externalUrl = process.env.CUSTOM_ENV_VARIABLE
+const TOKEN = process.env.token || '967707077:AAEMq2FtEVbZS8jzpA1a2kBxk3d77SQylwU';
+const DBNAME = process.env.dbname || 'mongodb';
+const PASSWORD = process.env.password || 'dbUser';
+const PORT = process.env.PORT || 8000;
+const externalUrl = process.env.CUSTOM_ENV_VARIABLE || '0.0.0.0';
 
 const User = require('./User');
 const Item = require('./Item');
 
 const MongoClient = require('mongodb').MongoClient;
-
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot(TOKEN, {webHook: {port: PORT, host: '0.0.0.0'}});
-bot.setWebHook(process.env.HEROKU_URL + bot.token);
+const express = require('express');
+
 
 function updateDB(user) {
 	histToWrite = [];
@@ -29,6 +28,8 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 	if (err) return console.log(err);
 
 	db = client.db(DBNAME).collection("budget");
+
+	const bot = new TelegramBot(TOKEN, {polling: true});
 
 	// Create new user
 	bot.onText(/\/start$/, (msg, match) => {
@@ -187,4 +188,9 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 				bot.sendMessage(msg.chat.id, JSON.stringify(data.map(i => i.id)));
 			});
 	});
+
+
+	app = express();
+	app.get('/', (req, res) => res.send('Hello!'));
+	app.listen(PORT, () => console.log("Listening port"));
 });
