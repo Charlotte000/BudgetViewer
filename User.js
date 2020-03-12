@@ -49,8 +49,7 @@ class User {
 			c.data.push(i);
 			c.cost += parseInt(i.cost)
 		}
-		moment.tz('Europe/Moscow').locale('ru')
-		items.sort((a, b) => moment(a.date, 'MMMM YYYY') > moment(b.date, 'MMMM YYYY'));
+		items.sort((a, b) => moment(a.date, 'MMMM YYYY', 'ru') > moment(b.date, 'MMMM YYYY', 'ru'));
 		for (let d of items) d.data.sort((a, b) => a.date > b.date);
 		return {'items': items}
 	}
