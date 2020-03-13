@@ -24,7 +24,7 @@ class User {
 		let items = this.history.filter(i => i.date.year() == now.year() && i.date.month() == now.month() && i.date.date() == now.date());
 		let cost = 0
 		for (let i of items) cost += parseInt(i.cost);
-		items.sort((a, b) => a.date > b.date);
+		items.sort((a, b) => a.date - b.date);
 
 		return {'items': items, 'cost': cost, 'date': now.locale('ru').format('Do MMMM YYYY')};
 	}
@@ -34,7 +34,7 @@ class User {
 		let items = this.history.filter(i => i.date.year() == now.year() && i.date.month() == now.month())
 		let cost = 0
 		for (let i of items) cost += parseInt(i.cost);
-		items.sort((a, b) => a.date > b.date);
+		items.sort((a, b) => a.date - b.date);
 		return {'items': items, 'cost': cost, 'date': now.locale('ru').format('MMMM YYYY')};
 	}
 
@@ -49,8 +49,8 @@ class User {
 			c.data.push(i);
 			c.cost += parseInt(i.cost)
 		}
-		items.sort((a, b) => moment(a.date, 'MMMM YYYY', 'ru') > moment(b.date, 'MMMM YYYY', 'ru'));
-		for (let d of items) d.data.sort((a, b) => a.date > b.date);
+		items.sort((a, b) => moment(a.date, 'MMMM YYYY', 'ru') - moment(b.date, 'MMMM YYYY', 'ru'));
+		for (let d of items) d.data.sort((a, b) => a.date - b.date);
 		return {'items': items}
 	}
 
