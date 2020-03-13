@@ -1,3 +1,5 @@
+process.env.NTBA_FIX_319 = 1;
+
 const TOKEN = process.env.token;
 const DBNAME = process.env.dbname;
 const PASSWORD = process.env.password;
@@ -8,7 +10,6 @@ const Item = require('./Item');
 
 const MongoClient = require('mongodb').MongoClient;
 const TelegramBot = require('node-telegram-bot-api');
-const express = require('express');
 
 
 function updateDB(user) {
@@ -188,9 +189,4 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 				bot.sendMessage(msg.chat.id, JSON.stringify(data.map(i => i.id)));
 			});
 	});
-
-
-	// app = express();
-	// app.get('/', (req, res) => res.send('Hello!'));
-	// app.listen(PORT, () => console.log(`Listening port at ${PORT}`));
 });
