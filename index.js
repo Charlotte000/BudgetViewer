@@ -34,8 +34,14 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, (err
 
 	// Create new user
 	bot.onText(/\/start$/, (msg, match) => {
-		p = new User(msg.chat.id);
-		db.insertOne(p, (err, r) => bot.sendMessage(msg.chat.id, "Done"));
+
+		db.findOne({id: msg.chat.id}, (err, u) => {
+			if (err || !u) {
+				p = new User(msg.chat.id);
+				db.insertOne(p, (err, r) => bot.sendMessage(msg.chat.id, "Done"));
+			} else bot.sendMessage(msg.chat.id, 'User has already created');
+		});
+
 	});
 
 	// Get today expenses
